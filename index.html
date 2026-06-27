@@ -156,7 +156,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Güncellenen Yeni Harita Butonu */
+        /* Harita Butonu */
         .map-button {
             display: inline-block;
             font-family: 'Jost', sans-serif;
@@ -193,6 +193,31 @@
             transition: opacity 0.3s ease;
         }
 
+        /* SOL ÜSTTEKİ ZARİF MÜZİK KONTROL BUTONU */
+        .music-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 5;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid #e0d9d8;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.08);
+            background: #ffffff;
+        }
+
         @media (max-width: 600px) {
             .wedding-card {
                 width: 92%;
@@ -203,13 +228,27 @@
                 bottom: 15px;
                 right: 15px;
             }
+            .music-btn {
+                top: 15px;
+                left: 15px;
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-
     <div class="background-image"></div>
     <div class="background-overlay"></div>
+
+    <!-- Sol Üst Müzik Açma Butonu -->
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+
+    <!-- Arka Planda Çalacak Bruno Mars Youtube Player (Gizli Alan) -->
+    <div style="position: absolute; visibility: hidden; width: 0; height: 0;">
+        <div id="youtube-player"></div>
+    </div>
 
     <div class="wedding-card">
         <div class="heart-icon">❤️</div>
@@ -240,8 +279,7 @@
 
         <div class="bottom-message">Sonsuz mutluluğa doğru geri sayım başladı...</div>
 
-        <!-- Gönderdiğiniz yeni Google Haritalar linki sorunsuz yönlendirmeyle tanımlandı -->
-        <a href="https://maps.app.goo.gl/LP8S9PvQXyPeUJno7" target="_blank" rel="noopener noreferrer" class="map-button">
+        <a href="https://goo.gl" target="_blank" rel="noopener noreferrer" class="map-button">
             Haritada Görüntüle
         </a>
     </div>
@@ -250,7 +288,44 @@
         <source src="video.mp4" type="video/mp4">
     </video>
 
+    <!-- YouTube API ve Müzik Kontrol Kodları -->
     <script>
+        var tag = document.createElement('script');
+        tag.src = "https://youtube.com";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        var isPlaying = false;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-player', {
+                height: '0',
+                width: '0',
+                videoId: 'dElRVQFqj-k', // Bruno Mars - Marry You Video ID
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 0,
+                    'loop': 1,
+                    'playlist': 'dElRVQFqj-k'
+                }
+            });
+        }
+
+        function toggleMusic() {
+            var btn = document.getElementById('musicBtn');
+            if (!isPlaying) {
+                player.playVideo();
+                btn.innerText = '⏸️';
+                isPlaying = true;
+            } else {
+                player.pauseVideo();
+                btn.innerText = '🎵';
+                isPlaying = false;
+            }
+        }
+
+        // Canlı Sayaç Scripti
         const weddingDate = new Date(2026, 8, 26, 0, 0, 0).getTime();
 
         const timer = setInterval(function() {
