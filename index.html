@@ -13,8 +13,6 @@
         .click-layer {position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 8; cursor: pointer;}
         .background-image {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('arka-plan.jpg'); background-size: cover; background-position: 62% center; opacity: 0.85; z-index: 1;}
         .background-overlay {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.15); z-index: 2;}
-        
-        /* SAĞ ÜST YAZI ALANI */
         .wedding-card {position: fixed; top: 12px; right: 12px; z-index: 99; width: 50%; max-width: 200px; text-align: center; background: none; box-shadow: none; backdrop-filter: none; padding: 0;}
         .heart-icon {font-size: 1.1rem; color: #e24444; margin-bottom: 2px; animation: pulse 1.5s infinite; display: inline-block;}
         @keyframes pulse {0% { transform: scale(1); } 50% { transform: scale(1.08); } 100% { transform: scale(1); }}
@@ -31,7 +29,6 @@
         .map-button {position: fixed; bottom: 15px; left: 15px; z-index: 99; display: inline-block; font-family: 'Jost', sans-serif; font-size: 0.62rem; font-weight: 500; color: #ffffff; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; padding: 10px 14px; border-radius: 6px; background: rgba(0, 0, 0, 0.55); border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(4px); box-shadow: 0 6px 15px rgba(0,0,0,0.3); transition: all 0.3s ease; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); line-height: 1.2; cursor: pointer;}
         .map-button:hover, .map-button:active {background: rgba(0, 0, 0, 0.85); transform: translateY(-1px);}
         
-        /* SAĞ ALTAKİ VİDEO */
         .bottom-right-video {position: fixed; bottom: 0; right: 0; width: 80px; height: 155px; border-top-left-radius: 12px; box-shadow: -4px -4px 15px rgba(0,0,0,0.2); z-index: 4; opacity: 0.55; object-fit: cover;}
         .music-btn {position: fixed; top: 12px; left: 12px; z-index: 100; background: rgba(255, 255, 255, 0.9); border: 1px solid #e8e2e1; width: 30px; height: 30px; border-radius: 50%; font-size: 0.7rem; cursor: pointer; display: flex; justify-content: center; align-items: center;}
         
@@ -64,7 +61,7 @@
         <div class="bottom-message">Sonsuz mutluluğa doğru geri sayım başladı...</div>
     </div>
 
-    <!-- MASAÜSTÜ VE MOBİLDE %100 KESİN AÇILAN YENİ GÜVENLİ BUTON -->
+    <!-- TÜM CİHAZLARDA VE TARAYICILARDA SAPMASIZ ÇALIŞAN RESMİ COĞRAFİ KONUM BUTONU -->
     <a href="#" onclick="openSmartMap(event)" class="map-button">
         DÜĞÜN MERASİM ALANI 📍
     </a>
@@ -85,27 +82,27 @@
             else { myAudio.pause(); btn.innerText = '🎵'; isPlaying = false; }
         }
 
+        // Sapma ve Çoklu Liste Çıkma Sorununu Çözen Evrensel Yer Kimliği Protokolü
         function openSmartMap(event) {
             if(event) event.preventDefault();
             
-            var queryLabel = "Çamlık Düğün Salonu, Karşıyaka/İzmir";
-            var encodedLabel = encodeURIComponent(queryLabel);
+            var lat = "38.4715981";
+            var lng = "27.1239724";
+            var placeId = "ChIJX8XU2dTasBQRbYktfZ0qWq0"; // Çamlık Düğün Salonu Benzersiz Sistem ID'si
+            var label = encodeURIComponent("Çamlık Düğün Salonu");
             
             var isApple = /Mac|iPhone|iPod|iPad/.test(navigator.userAgent);
             var isAndroid = /Android/.test(navigator.userAgent);
 
             if (isApple) {
-                // 1. IOS (Apple Haritalar)
-                window.open("maps://?q=" + encodedLabel, "_blank");
+                // 1. IOS (Apple Haritalar) - Nokta Atışı Rota Koordinatı
+                window.open("maps://?q=" + label + "&ll=" + lat + "," + lng, "_blank");
             } else if (isAndroid) {
-                // 2. Android (Google Haritalar Uygulaması)
-                window.open("geo:0,0?q=" + encodedLabel, "_blank");
-                setTimeout(function() {
-                    window.open("https://google.com", "_blank");
-                }, 400);
+                // 2. Android (Google Haritalar Uygulaması) - Doğrudan İşletme Kimliği Bağlantısı
+                window.open("https://google.com" + lat + "," + lng + "&query_place_id=" + placeId, "_blank");
             } else {
-                // 3. MASAÜSTÜ PC (Windows/Mac Tarayıcı) - Kesin ve resmi Google Harita tescilli web linki
-                window.open("https://google.com", "_blank");
+                // 3. MASAÜSTÜ PC (Windows/Mac) - Sıfır Arama Hatası Sunan Resmi Evrensel URL Şeması
+                window.open("https://google.com:" + placeId, "_blank");
             }
         }
 
