@@ -29,19 +29,18 @@
         .countdown-label {font-size: 0.35rem; text-transform: uppercase; color: #ffffff; font-weight: 300;}
         .bottom-message {font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.6rem; color: #ffffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); line-height: 1.1;}
         
-        /* GÜNCELLENEN ŞIK, KOYU ŞEFFAF CAM EFEKTLİ HARİTA ALANI */
-        .embedded-map-container {position: fixed; bottom: 12px; left: 12px; width: 130px; height: 100px; border-radius: 8px; overflow: hidden; box-shadow: 0 6px 15px rgba(0,0,0,0.3); z-index: 99; border: 1px solid rgba(255,255,255,0.25); background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(4px); transition: transform 0.3s ease;}
-        .embedded-map-container iframe {width: 100% !important; height: 100% !important; border: 0; opacity: 0.65; transition: opacity 0.3s ease;}
-        .embedded-map-container:hover iframe, .embedded-map-container:active iframe {opacity: 1;}
+        /* İSTEDİĞİNİZ GİBİ: SOL ALTA ALINMIŞ ŞIK, YARI ŞEFAF FÜME KONUM BUTONU */
+        .map-button {position: fixed; bottom: 15px; left: 15px; z-index: 99; display: inline-block; font-family: 'Jost', sans-serif; font-size: 0.62rem; font-weight: 500; color: #ffffff; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; padding: 10px 14px; border-radius: 6px; background: rgba(0, 0, 0, 0.55); border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(4px); box-shadow: 0 6px 15px rgba(0,0,0,0.3); transition: all 0.3s ease; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); line-height: 1.2;}
+        .map-button:hover, .map-button:active {background: rgba(0, 0, 0, 0.85); transform: translateY(-1px);}
         
-        /* İSTEDİĞİNİZ GİBİ: DAHA SAĞA VE EN ALTA SIFIRLANMIŞ VİDEO */
+        /* SAĞ ALTA SIFIRLANMIŞ VİDEO */
         .bottom-right-video {position: fixed; bottom: 0; right: 0; width: 80px; height: 155px; border-top-left-radius: 12px; box-shadow: -4px -4px 15px rgba(0,0,0,0.2); z-index: 4; opacity: 0.55; object-fit: cover;}
         
         .music-btn {position: fixed; top: 12px; left: 12px; z-index: 100; background: rgba(255, 255, 255, 0.9); border: 1px solid #e8e2e1; width: 30px; height: 30px; border-radius: 50%; font-size: 0.7rem; cursor: pointer; display: flex; justify-content: center; align-items: center;}
         
         @media (max-width: 330px) {
             .wedding-card { max-width: 150px; top: 10px; right: 10px; }
-            .embedded-map-container { width: 110px; height: 85px; bottom: 10px; left: 10px; }
+            .map-button { font-size: 0.55rem; padding: 8px 10px; bottom: 10px; left: 10px; }
             .bottom-right-video { width: 70px; height: 135px; }
         }
     </style>
@@ -67,9 +66,10 @@
         <div class="bottom-message">Sonsuz mutluluğa doğru geri sayım başladı...</div>
     </div>
 
-    <div class="embedded-map-container">
-        <iframe src="https://google.com" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
-    </div>
+    <!-- Kesin Çözümlü Çamlık Düğün Salonu Google Harita Link Protokolü -->
+    <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="map-button">
+        Düğün Salonumuzun Konumu 📍
+    </a>
 
     <video class="bottom-right-video" autoplay muted loop playsinline><source src="video.mp4" type="video/mp4"></video>
 
