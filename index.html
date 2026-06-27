@@ -11,8 +11,6 @@
         * {margin: 0; padding: 0; box-sizing: border-box;}
         body, html {height: 100%; font-family: 'Jost', sans-serif; background-color: #fcfbfa; overflow: hidden; position: relative;}
         .click-layer {position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 8; cursor: pointer;}
-        
-        /* MOBİLDE İKİNİZİN DE TAM ORTALI VE NET GÖRÜNMESİNİ SAĞLAYAN GÜNCEL AYAR */
         .background-image {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('arka-plan.jpg'); background-size: cover; background-position: 55% center; opacity: 0.85; z-index: 1;}
         .background-overlay {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.15); z-index: 2;}
         
@@ -29,8 +27,8 @@
         .countdown-label {font-size: 0.35rem; text-transform: uppercase; color: #ffffff; font-weight: 300;}
         .bottom-message {font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.6rem; color: #ffffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); line-height: 1.1;}
         
-        /* ŞIK, CAM EFEKTLİ AKILLI HARİTA BUTONU */
-        .map-button {position: fixed; bottom: 15px; left: 15px; z-index: 99; display: inline-block; font-family: 'Jost', sans-serif; font-size: 0.62rem; font-weight: 500; color: #ffffff; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; padding: 10px 14px; border-radius: 6px; background: rgba(0, 0, 0, 0.55); border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(4px); box-shadow: 0 6px 15px rgba(0,0,0,0.3); transition: all 0.3s ease; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); line-height: 1.2; cursor: pointer;}
+        /* ŞIK, SAF SAF PAYLAŞIM LİNKİ BAĞLI HARİTA BUTONU */
+        .map-button {position: fixed; bottom: 15px; left: 15px; z-index: 99; display: inline-block; font-family: 'Jost', sans-serif; font-size: 0.62rem; font-weight: 500; color: #ffffff; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; padding: 10px 14px; border-radius: 6px; background: rgba(0, 0, 0, 0.55); border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(4px); box-shadow: 0 6px 15px rgba(0,0,0,0.3); transition: all 0.3s ease; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); line-height: 1.2;}
         .map-button:hover, .map-button:active {background: rgba(0, 0, 0, 0.85); transform: translateY(-1px);}
         
         .bottom-right-video {position: fixed; bottom: 0; right: 0; width: 80px; height: 155px; border-top-left-radius: 12px; box-shadow: -4px -4px 15px rgba(0,0,0,0.2); z-index: 4; opacity: 0.55; object-fit: cover;}
@@ -65,8 +63,8 @@
         <div class="bottom-message">Sonsuz mutluluğa doğru geri sayım başladı...</div>
     </div>
 
-    <!-- MASAÜSTÜ, ANDROID VE IOS STANDARTLARINA UYUMLU %100 KESİN AÇILAN RESMİ WEB BAĞLANTI BUTONU -->
-    <a href="#" onclick="openSmartMap(event)" class="map-button">
+    <!-- TARAYICI ENGELİ OLMAKSIZIN DOĞRUDAN RESMİ PAYLAŞIM ADRESİNE BAĞLANAN BUTON -->
+    <a href="https://maps.app.goo.gl/dprdGMF8kWcTV2Yc7" target="_blank" rel="noopener noreferrer" class="map-button">
         DÜĞÜN MERASİM ALANI 📍
     </a>
 
@@ -84,25 +82,6 @@
             var btn = document.getElementById('musicBtn');
             if (!isPlaying) { myAudio.play(); btn.innerText = '⏸️'; isPlaying = true; document.getElementById("clickLayer").style.display = "none"; } 
             else { myAudio.pause(); btn.innerText = '🎵'; isPlaying = false; }
-        }
-
-        // Tüm Cihazlarda ve Tarayıcılarda Hatasız Çalışan Kesin Çözümlü URL Rotalama Sistemi
-        function openSmartMap(event) {
-            if(event) event.preventDefault();
-            
-            var lat = "38.471598";
-            var lng = "27.123972";
-            var label = encodeURIComponent("Çamlık Düğün Salonu, Karşıyaka/İzmir");
-            
-            var isApple = /Mac|iPhone|iPod|iPad/.test(navigator.userAgent);
-
-            if (isApple) {
-                // 1. iOS ve Mac (Apple Haritalar) - Doğrudan Konum Arama Protokolü
-                window.open("maps://?q=" + label + "&ll=" + lat + "," + lng, "_blank");
-            } else {
-                // 2. Android ve Masaüstü Windows PC - Resmi ve Kısıtlanamayan Evrensel Google Maps Arama Şeması
-                window.open("https://google.com" + lat + "," + lng + "+(" + label + ")&z=17", "_blank");
-            }
         }
 
         const weddingDate = new Date(2026, 8, 20, 20, 0, 0).getTime();
