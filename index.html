@@ -13,22 +13,22 @@
         .click-layer {position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 8; cursor: pointer;}
         .background-image {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('arka-plan.jpg'); background-size: cover; background-position: center; opacity: 0.85; z-index: 1;}
         .background-overlay {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.18); z-index: 2;}
-        .wedding-card {position: relative; z-index: 99; background: rgba(255, 255, 255, 0.95); width: 92%; max-width: 460px; padding: 20px 30px; border-radius: 16px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); text-align: center; backdrop-filter: blur(5px);}
-        .heart-icon {font-size: 2.5rem; color: #e24444; margin-bottom: 5px; animation: pulse 1.5s infinite;}
+        .wedding-card {position: relative; z-index: 99; background: rgba(255, 255, 255, 0.95); width: 92%; max-width: 440px; padding: 20px 25px; border-radius: 16px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); text-align: center; backdrop-filter: blur(5px); display: flex; flex-direction: column; justify-content: center;}
+        .heart-icon {font-size: 2.3rem; color: #e24444; margin-bottom: 3px; animation: pulse 1.5s infinite;}
         @keyframes pulse {0% { transform: scale(1); } 50% { transform: scale(1.08); } 100% { transform: scale(1); }}
-        .names {font-family: 'Playfair Display', serif; font-size: 2.1rem; font-weight: 400; color: #4a3e3d; line-height: 1.2; margin-bottom: 2px;}
-        .wedding-text {font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #4a3e3d; margin-bottom: 8px; font-weight: 400;}
-        .date {font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; color: #6e5d5c; border-top: 1px solid #e8e2e1; border-bottom: 1px solid #e8e2e1; padding: 4px 0; letter-spacing: 0.5px; margin-bottom: 14px;}
-        .countdown-grid {display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 14px;}
-        .countdown-box {background: #ffffff; padding: 8px; border-radius: 6px; border: 1px solid #f2eded; display: flex; flex-direction: column; align-items: center;}
-        .countdown-number {font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 400; color: #4a3e3d;}
-        .countdown-label {font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; color: #9c8b8a; margin-top: 1px;}
-        .bottom-message {font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: #6e5d5c; margin-bottom: 15px;}
+        .names {font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; color: #4a3e3d; line-height: 1.2; margin-bottom: 2px;}
+        .wedding-text {font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #4a3e3d; margin-bottom: 6px; font-weight: 400;}
+        .date {font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 400; color: #6e5d5c; border-top: 1px solid #e8e2e1; border-bottom: 1px solid #e8e2e1; padding: 3px 0; letter-spacing: 0.5px; margin-bottom: 12px;}
+        .countdown-grid {display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 12px;}
+        .countdown-box {background: #ffffff; padding: 6px 10px; border-radius: 6px; border: 1px solid #f2eded; display: flex; flex-direction: column; align-items: center;}
+        .countdown-number {font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; color: #4a3e3d;}
+        .countdown-label {font-size: 0.55rem; text-transform: uppercase; letter-spacing: 1px; color: #9c8b8a; margin-top: 1px;}
+        .bottom-message {font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.95rem; color: #6e5d5c; margin-bottom: 12px;}
         .map-button {display: inline-block; font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 500; color: #ffffff; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; padding: 11px 0; width: 100%; border-radius: 6px; background-color: #4a3e3d; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(74, 62, 61, 0.15); position: relative; z-index: 100;}
         .map-button:hover {background-color: #635352; transform: translateY(-1px);}
-        .bottom-right-video {position: fixed; bottom: 15px; right: 15px; width: 140px; height: auto; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.12); z-index: 4; opacity: 0.50;}
-        .music-btn {position: fixed; top: 15px; left: 15px; z-index: 100; background: rgba(255, 255, 255, 0.9); border: 1px solid #e8e2e1; width: 38px; height: 38px; border-radius: 50%; font-size: 1rem; cursor: pointer; display: flex; justify-content: center; align-items: center; box-shadow: 0 3px 10px rgba(0,0,0,0.08); transition: all 0.3s ease;}
-        @media (max-width: 600px) {.wedding-card {width: 90%; padding: 15px 20px;} .names { font-size: 1.8rem; } .wedding-text { font-size: 1.3rem; } .bottom-right-video { width: 100px; }}
+        .bottom-right-video {position: fixed; bottom: 12px; right: 12px; width: 120px; height: auto; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.12); z-index: 4; opacity: 0.50;}
+        .music-btn {position: fixed; top: 12px; left: 12px; z-index: 100; background: rgba(255, 255, 255, 0.9); border: 1px solid #e8e2e1; width: 36px; height: 36px; border-radius: 50%; font-size: 0.9rem; cursor: pointer; display: flex; justify-content: center; align-items: center; box-shadow: 0 3px 10px rgba(0,0,0,0.08); transition: all 0.3s ease;}
+        @media (max-width: 360px) {.wedding-card {padding: 15px 15px;} .names { font-size: 1.7rem; } .wedding-text { font-size: 1.2rem; } .countdown-number { font-size: 1.2rem; } .bottom-right-video { width: 85px; }}
     </style>
 </head>
 <body>
@@ -36,7 +36,7 @@
     <div class="background-image"></div>
     <div class="background-overlay"></div>
     <button class="music-btn" id="musicBtn" onclick="toggleMusic()">⏸️</button>
-    <audio id="weddingMusic" loop><source src="https://archive.org" type="audio/mp3"></audio>
+    <div style="position:absolute; visibility:hidden; width:0; height:0;"><div id="yt-player"></div></div>
     <div class="wedding-card">
         <div class="heart-icon">❤️</div>
         <h1 class="names">Serkan & Dilara</h1>
@@ -53,18 +53,25 @@
     </div>
     <video class="bottom-right-video" autoplay muted loop playsinline><source src="video.mp4" type="video/mp4"></video>
     <script>
-        var myAudio = document.getElementById("weddingMusic");
-        var isPlaying = false;
+        var tag = document.createElement('script'); tag.src = "https://youtube.com";
+        var firstScriptTag = document.getElementsByTagName('script')[0]; firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        var player; var isPlaying = false;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('yt-player', {
+                height: '0', width: '0', videoId: 'dElRVQFqj-k',
+                playerVars: {'autoplay': 0, 'controls': 0, 'loop': 1, 'playlist': 'dElRVQFqj-k', 'playsinline': 1}
+            });
+        }
         function startMusic() {
-            if(!isPlaying) {
-                myAudio.play().then(function() { isPlaying = true; document.getElementById("clickLayer").style.display = "none"; }).catch(function(e){});
+            if(!isPlaying && player && typeof player.playVideo === 'function') {
+                player.playVideo(); isPlaying = true; document.getElementById("clickLayer").style.display = "none";
             }
         }
-        function toggleMusic() {
-            event.stopPropagation();
+        function toggleMusic(event) {
+            if(event) event.stopPropagation();
             var btn = document.getElementById('musicBtn');
-            if (!isPlaying) { myAudio.play(); btn.innerText = '⏸️'; isPlaying = true; document.getElementById("clickLayer").style.display = "none"; } 
-            else { myAudio.pause(); btn.innerText = '🎵'; isPlaying = false; }
+            if (!isPlaying) { player.playVideo(); btn.innerText = '⏸️'; isPlaying = true; document.getElementById("clickLayer").style.display = "none"; } 
+            else { player.pauseVideo(); btn.innerText = '🎵'; isPlaying = false; }
         }
         const weddingDate = new Date(2026, 8, 26, 0, 0, 0).getTime();
         setInterval(function() {
