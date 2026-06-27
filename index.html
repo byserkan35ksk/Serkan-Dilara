@@ -13,30 +13,44 @@
         .click-layer {position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 8; cursor: pointer;}
         .background-image {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('arka-plan.jpg'); background-size: cover; background-position: center; opacity: 0.85; z-index: 1;}
         .background-overlay {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.18); z-index: 2;}
-        .wedding-card {position: relative; z-index: 99; background: rgba(255, 255, 255, 0.95); width: 92%; max-width: 440px; padding: 15px 20px; border-radius: 14px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); text-align: center; backdrop-filter: blur(5px);}
-        .heart-icon {font-size: 2rem; color: #e24444; margin-bottom: 2px; animation: pulse 1.5s infinite;}
+        
+        /* İstediğiniz Gibi: BOYUTLARI BÜYÜK ORANDA KÜÇÜLTÜLMÜŞ MİNYATÜR KART */
+        .wedding-card {position: relative; z-index: 99; background: rgba(255, 255, 255, 0.95); width: 85%; max-width: 320px; padding: 15px 15px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); text-align: center; backdrop-filter: blur(5px);}
+        .heart-icon {font-size: 1.6rem; color: #e24444; margin-bottom: 2px; animation: pulse 1.5s infinite;}
         @keyframes pulse {0% { transform: scale(1); } 50% { transform: scale(1.08); } 100% { transform: scale(1); }}
-        .names {font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 400; color: #4a3e3d; line-height: 1.2; margin-bottom: 2px;}
-        .wedding-text {font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #4a3e3d; margin-bottom: 6px; font-weight: 400;}
-        .date {font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 400; color: #6e5d5c; border-top: 1px solid #e8e2e1; border-bottom: 1px solid #e8e2e1; padding: 3px 0; letter-spacing: 0.5px; margin-bottom: 10px;}
-        .countdown-grid {display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 10px;}
-        .countdown-box {background: #ffffff; padding: 5px; border-radius: 6px; border: 1px solid #f2eded; display: flex; flex-direction: column; align-items: center;}
-        .countdown-number {font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 400; color: #4a3e3d;}
-        .countdown-label {font-size: 0.55rem; text-transform: uppercase; letter-spacing: 1px; color: #9c8b8a; margin-top: 1px;}
-        .bottom-message {font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.85rem; color: #6e5d5c; margin-bottom: 10px;}
-        .map-button {display: inline-block; font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 500; color: #ffffff; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; padding: 10px 0; width: 100%; border-radius: 6px; background-color: #4a3e3d; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(74, 62, 61, 0.15); position: relative; z-index: 100;}
-        .map-button:hover {background-color: #635352; transform: translateY(-1px);}
-        .bottom-right-video {position: fixed; bottom: 12px; right: 12px; width: 110px; height: auto; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.12); z-index: 4; opacity: 0.50;}
-        .music-btn {position: fixed; top: 12px; left: 12px; z-index: 100; background: rgba(255, 255, 255, 0.9); border: 1px solid #e8e2e1; width: 34px; height: 34px; border-radius: 50%; font-size: 0.85rem; cursor: pointer; display: flex; justify-content: center; align-items: center; box-shadow: 0 3px 10px rgba(0,0,0,0.08); transition: all 0.3s ease;}
-        @media (max-width: 600px) {.wedding-card {padding: 12px 15px;} .names { font-size: 1.5rem; } .wedding-text { font-size: 1.1rem; } .countdown-number { font-size: 1.1rem; } .bottom-right-video { width: 85px; }}
+        
+        /* Mobil Uyumlu Küçük Fontlar */
+        .names {font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; color: #4a3e3d; line-height: 1.2; margin-bottom: 1px;}
+        .wedding-text {font-family: 'Playfair Display', serif; font-size: 1rem; color: #4a3e3d; margin-bottom: 4px; font-weight: 400;}
+        .date {font-family: 'Playfair Display', serif; font-size: 0.8rem; font-weight: 400; color: #6e5d5c; border-top: 1px solid #e8e2e1; border-bottom: 1px solid #e8e2e1; padding: 2px 0; margin-bottom: 8px;}
+        
+        .countdown-grid {display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; margin-bottom: 8px;}
+        .countdown-box {background: #ffffff; padding: 4px; border-radius: 4px; border: 1px solid #f2eded; display: flex; flex-direction: column; align-items: center;}
+        .countdown-number {font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 400; color: #4a3e3d;}
+        .countdown-label {font-size: 0.5rem; text-transform: uppercase; color: #9c8b8a; margin-top: 1px;}
+        .bottom-message {font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.75rem; color: #6e5d5c; margin-bottom: 8px;}
+        
+        /* Şık ve Küçük Harita Butonu */
+        .map-button {display: inline-block; font-family: 'Jost', sans-serif; font-size: 0.7rem; font-weight: 500; color: #ffffff; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; padding: 8px 0; width: 100%; border-radius: 4px; background-color: #4a3e3d; transition: all 0.3s ease; position: relative; z-index: 100;}
+        .map-button:hover {background-color: #635352;}
+        
+        .bottom-right-video {position: fixed; bottom: 10px; right: 10px; width: 90px; height: auto; border-radius: 8px; box-shadow: 0 6px 15px rgba(0,0,0,0.12); z-index: 4; opacity: 0.50;}
+        .music-btn {position: fixed; top: 10px; left: 10px; z-index: 100; background: rgba(255, 255, 255, 0.9); border: 1px solid #e8e2e1; width: 32px; height: 32px; border-radius: 50%; font-size: 0.75rem; cursor: pointer; display: flex; justify-content: center; align-items: center;}
     </style>
 </head>
 <body>
+    <!-- Ekranın herhangi bir yerine dokunulduğunda müziği başlatan katman -->
     <div class="click-layer" id="clickLayer" onclick="startMusic()"></div>
     <div class="background-image"></div>
     <div class="background-overlay"></div>
+    
     <button class="music-btn" id="musicBtn" onclick="toggleMusic(event)">⏸️</button>
-    <audio id="weddingMusic" loop prefetch="auto"><source src="https://archive.org" type="audio/mp3"></audio>
+    
+    <!-- Sizin yükleyeceğiniz yerel müzik dosyasını çalan altyapı -->
+    <audio id="weddingMusic" loop prefetch="auto">
+        <source src="muzik.mp3" type="audio/mp3">
+    </audio>
+
     <div class="wedding-card">
         <div class="heart-icon">❤️</div>
         <h1 class="names">Serkan & Dilara</h1>
@@ -49,9 +63,13 @@
             <div class="countdown-box"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">Saniye</span></div>
         </div>
         <div class="bottom-message">Sonsuz mutluluğa doğru geri sayım başladı...</div>
-        <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="map-button">Haritada Görüntüle</a>
+        
+        <!-- Kesin olarak Haritayı tetikleyen resmi Google Harita Protokolü -->
+        <a href="https://google.comzmir" target="_blank" rel="noopener noreferrer" class="map-button">Haritada Görüntüle</a>
     </div>
+
     <video class="bottom-right-video" autoplay muted loop playsinline><source src="video.mp4" type="video/mp4"></video>
+
     <script>
         var myAudio = document.getElementById("weddingMusic"); var isPlaying = false;
         function startMusic() {
@@ -65,6 +83,8 @@
             if (!isPlaying) { myAudio.play(); btn.innerText = '⏸️'; isPlaying = true; document.getElementById("clickLayer").style.display = "none"; } 
             else { myAudio.pause(); btn.innerText = '🎵'; isPlaying = false; }
         }
+        
+        // Canlı Sayaç Kodları
         const weddingDate = new Date(2026, 8, 26, 0, 0, 0).getTime();
         setInterval(function() {
             const now = new Date().getTime(); const distance = weddingDate - now;
