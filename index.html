@@ -48,27 +48,70 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.15);
+            background: rgba(0, 0, 0, 0.2);
             z-index: 2;
         }
 
-        /* Yatayda Geniş, Yüksekliği Az Zarif Davetiye Kartı */
+        /* İlk Giriş Ekranı Perdesi */
+        .welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fcfbfa;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .welcome-btn {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #ffffff;
+            background-color: #4a3e3d;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(74, 62, 61, 0.2);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .welcome-btn:hover {
+            background-color: #635352;
+            transform: translateY(-2px);
+        }
+
+        /* İstediğiniz gibi: ÇOK DAHA GENİŞ ve Yayvan Davetiye Kartı */
         .wedding-card {
             position: relative;
             z-index: 3;
             background: rgba(255, 255, 255, 0.94); 
-            width: 90%;
-            max-width: 440px; 
-            padding: 30px 35px; 
+            width: 92%;
+            max-width: 520px; /* Genişliği 440px'den 520px'e yükselttik */
+            padding: 35px 40px; 
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.18);
             text-align: center;
             backdrop-filter: blur(5px);
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.8s ease 0.2s;
+        }
+
+        /* Kartın görünür olma efekti */
+        .wedding-card.show {
+            opacity: 1;
+            transform: scale(1);
         }
 
         /* Büyük Kalp Alanı */
         .heart-icon {
-            font-size: 3.2rem; 
+            font-size: 3.5rem; 
             color: #e24444;
             margin-bottom: 15px;
             animation: pulse 1.5s infinite;
@@ -83,7 +126,7 @@
         /* İsimler Bölümü */
         .names {
             font-family: 'Playfair Display', serif;
-            font-size: 2.3rem; 
+            font-size: 2.6rem; 
             font-weight: 400;
             color: #615352;
             line-height: 1.3;
@@ -93,16 +136,16 @@
         /* Wedding Alt Başlığı */
         .wedding-text {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: #615352;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             font-weight: 400;
         }
 
         /* Tarih */
         .date {
             font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 400;
             color: #7d6e6d;
             border-top: 1px solid #e0d9d8;
@@ -117,7 +160,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .countdown-box {
@@ -133,7 +176,7 @@
 
         .countdown-number {
             font-family: 'Playfair Display', serif;
-            font-size: 1.7rem; 
+            font-size: 1.8rem; 
             font-weight: 400;
             color: #4a3e3d;
         }
@@ -150,7 +193,7 @@
         .bottom-message {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             color: #7d6e6d;
             margin-bottom: 25px;
             letter-spacing: 0.5px;
@@ -160,13 +203,13 @@
         .map-button {
             display: inline-block;
             font-family: 'Jost', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 500;
             color: #ffffff;
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 2px;
-            padding: 12px 0;
+            padding: 13px 0;
             width: 100%;
             border-radius: 8px;
             background-color: #4a3e3d;
@@ -193,7 +236,7 @@
             transition: opacity 0.3s ease;
         }
 
-        /* SOL ÜSTTEKİ ZARİF MÜZİK KONTROL BUTONU */
+        /* SOL ÜSTTEKİ MÜZİK KONTROL BUTONU */
         .music-btn {
             position: fixed;
             top: 20px;
@@ -211,6 +254,13 @@
             align-items: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .music-btn.show {
+            opacity: 1;
+            visibility: visible;
         }
 
         .music-btn:hover {
@@ -223,34 +273,36 @@
                 width: 92%;
                 padding: 25px 20px;
             }
+            .names { font-size: 2.1rem; }
+            .wedding-text { font-size: 1.6rem; }
             .bottom-right-video {
                 width: 110px; 
                 bottom: 15px;
                 right: 15px;
             }
-            .music-btn {
-                top: 15px;
-                left: 15px;
-                width: 38px;
-                height: 38px;
-                font-size: 1rem;
-            }
         }
     </style>
 </head>
 <body>
+    <!-- Arka Plan Görselleri -->
     <div class="background-image"></div>
     <div class="background-overlay"></div>
 
-    <!-- Sol Üst Müzik Açma Butonu -->
-    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+    <!-- Giriş Ekranı Perdesi (Müziği Başlatmak İçin Şarttır) -->
+    <div class="welcome-overlay" id="welcomeOverlay">
+        <button class="welcome-btn" onclick="initWedding()">Davetiyeyi Aç & Müziği Başlat 🎵</button>
+    </div>
 
-    <!-- Arka Planda Çalacak Bruno Mars Youtube Player (Gizli Alan) -->
+    <!-- Sol Üst Müzik Durdurma Butonu -->
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">⏸️</button>
+
+    <!-- Arka Planda Çalacak Gizli Bruno Mars Oyuncusu -->
     <div style="position: absolute; visibility: hidden; width: 0; height: 0;">
         <div id="youtube-player"></div>
     </div>
 
-    <div class="wedding-card">
+    <!-- Genişletilmiş Davetiye Kartı -->
+    <div class="wedding-card" id="weddingCard">
         <div class="heart-icon">❤️</div>
 
         <h1 class="names">Serkan & Dilara</h1>
@@ -279,16 +331,18 @@
 
         <div class="bottom-message">Sonsuz mutluluğa doğru geri sayım başladı...</div>
 
+        <!-- Güncel ve Sorunsuz Harita Linki -->
         <a href="https://goo.gl" target="_blank" rel="noopener noreferrer" class="map-button">
             Haritada Görüntüle
         </a>
     </div>
 
+    <!-- Sağ Alttaki Video -->
     <video class="bottom-right-video" autoplay muted loop playsinline>
         <source src="video.mp4" type="video/mp4">
     </video>
 
-    <!-- YouTube API ve Müzik Kontrol Kodları -->
+    <!-- YouTube API ve Sayfa Yönetim Kodları -->
     <script>
         var tag = document.createElement('script');
         tag.src = "https://youtube.com";
@@ -302,7 +356,7 @@
             player = new YT.Player('youtube-player', {
                 height: '0',
                 width: '0',
-                videoId: 'dElRVQFqj-k', // Bruno Mars - Marry You Video ID
+                videoId: 'dElRVQFqj-k', // Bruno Mars - Marry You
                 playerVars: {
                     'autoplay': 0,
                     'controls': 0,
@@ -312,6 +366,27 @@
             });
         }
 
+        // Davetiyeyi Açan ve Müziği Otomatik Başlatan Fonksiyon
+        function initWedding() {
+            // Perdeyi kaldır
+            var overlay = document.getElementById('welcomeOverlay');
+            overlay.style.opacity = '0';
+            overlay.style.visibility = 'hidden';
+
+            // Kartı büyüterek göster
+            document.getElementById('weddingCard').classList.add('show');
+            
+            // Müzik butonunu görünür yap
+            document.getElementById('musicBtn').classList.add('show');
+
+            // Müziği oynat
+            if (player && typeof player.playVideo === 'function') {
+                player.playVideo();
+                isPlaying = true;
+            }
+        }
+
+        // Sol Üstteki Butonla Müziği Açıp Kapatma Fonksiyonu
         function toggleMusic() {
             var btn = document.getElementById('musicBtn');
             if (!isPlaying) {
