@@ -36,11 +36,11 @@
             background-image: url('arka-plan.jpg'); 
             background-size: cover;
             background-position: center;
-            opacity: 0.85; /* Fotoğraf artık tamamen net ve belirgin */
+            opacity: 0.85; 
             z-index: 1;
         }
 
-        /* Fotoğrafın üzerine yazıları okutacak hafif karartma perdesi */
+        /* Fotoğrafın üzerine hafif karartma perdesi */
         .background-overlay {
             position: fixed;
             top: 0;
@@ -51,25 +51,25 @@
             z-index: 2;
         }
 
-        /* Örnek görseldeki gibi dikey beyaz davetiye kartı */
+        /* Küçültülmüş ve daha zarif dikey davetiye kartı */
         .wedding-card {
             position: relative;
             z-index: 3;
-            background: rgba(255, 255, 255, 0.93); /* Şeffaf beyaz zarif kart */
-            width: 90%;
-            max-width: 400px;
-            padding: 40px 30px;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 0.93); 
+            width: 85%;
+            max-width: 320px; /* Genişliği 400px'den 320px'e düşürdük */
+            padding: 25px 20px; /* İç boşlukları daralttık */
+            border-radius: 18px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.18);
             text-align: center;
             backdrop-filter: blur(5px);
         }
 
-        /* En üstteki Kalp Alanı */
+        /* En üstteki Küçük Kalp */
         .heart-icon {
-            font-size: 2.5rem;
+            font-size: 1.8rem; /* Kalbi küçülttük */
             color: #e24444;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             animation: pulse 1.5s infinite;
         }
 
@@ -82,110 +82,104 @@
         /* İsimler Bölümü */
         .names {
             font-family: 'Cinzel', serif;
-            font-size: 2.4rem;
+            font-size: 1.8rem; /* Yazı boyutunu küçülttük */
             font-weight: 400;
             color: #4a3e3d;
-            line-height: 1.3;
-            margin-bottom: 10px;
+            line-height: 1.2;
+            margin-bottom: 6px;
         }
 
         .wedding-text {
-            font-size: 1rem;
-            letter-spacing: 6px;
+            font-size: 0.8rem;
+            letter-spacing: 4px;
             color: #8a7a78;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             font-weight: 400;
         }
 
-        /* Tarih ve Saat */
+        /* Tarih */
         .date {
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 400;
             color: #5a4b4a;
             border-top: 1px solid #e0d9d8;
             border-bottom: 1px solid #e0d9d8;
-            padding: 10px 0;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
+            padding: 6px 0;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
         }
 
-        /* Görseldeki gibi 2x2 Kare Sayaç Kutuları */
+        /* Küçük 2x2 Kare Sayaç Kutuları */
         .countdown-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 35px;
+            gap: 10px;
+            margin-bottom: 20px;
         }
 
         .countdown-box {
             background: #ffffff;
-            padding: 15px;
-            border-radius: 12px;
+            padding: 10px;
+            border-radius: 8px;
             border: 1px solid #f0eae9;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
         .countdown-number {
-            font-size: 1.8rem;
+            font-size: 1.3rem; /* Sayaç sayılarını küçülttük */
             font-weight: 400;
             color: #4a3e3d;
         }
 
         .countdown-label {
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             color: #9a8a88;
-            margin-top: 4px;
+            margin-top: 2px;
         }
 
-        /* Konum Butonu */
+        /* Küçük Harita Butonu */
         .map-button {
             display: inline-block;
             font-family: 'Jost', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 500;
             color: #ffffff;
             text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 14px 0;
+            letter-spacing: 1px;
+            padding: 10px 0;
             width: 100%;
-            border-radius: 12px;
+            border-radius: 8px;
             background-color: #4a3e3d;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(74, 62, 61, 0.3);
+            box-shadow: 0 4px 10px rgba(74, 62, 61, 0.2);
         }
 
         .map-button:hover {
             background-color: #635352;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
     </style>
 </head>
 <body>
 
-    <!-- Net Arka Plan Görseli -->
     <div class="background-image"></div>
     <div class="background-overlay"></div>
 
-    <!-- Dikey Davetiye Kartı -->
     <div class="wedding-card">
-        <!-- Kalp Logosu -->
         <div class="heart-icon">❤️</div>
 
-        <!-- Başlıklar -->
         <h1 class="names">Serkan & Dilara</h1>
         <div class="wedding-text">Wedding Day</div>
         
-        <!-- Tarih -->
         <div class="date">26 Eylül 2026</div>
 
-        <!-- 2x2 Geri Sayım Kutuları -->
         <div class="countdown-grid">
             <div class="countdown-box">
                 <span class="countdown-number" id="days">00</span>
@@ -205,13 +199,11 @@
             </div>
         </div>
 
-        <!-- Harita Konum Butonu -->
-        <a href="https://goo.gl" target="_blank" class="map-button">
+        <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="map-button">
             Haritada Görüntüle
         </a>
     </div>
 
-    <!-- Sayaç Scripti -->
     <script>
         const weddingDate = new Date(2026, 8, 26, 0, 0, 0).getTime();
 
