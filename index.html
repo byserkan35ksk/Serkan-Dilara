@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serkan & Dilara Wedding</title>
+    <!-- Şık bir yazı fontu ekliyoruz -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            background-color: #f7f5f0; /* Arka plan rengi */
+        }
+
+        /* Silik fotoğraf alanı */
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Buraya masaüstündeki fotoğrafınızın adını yazacaksınız */
+            background-image: url('arka-plan.jpg'); 
+            background-size: cover;
+            background-position: center;
+            /* Fotoğrafı silikleştiren kritik ayar (0.3 = %30 görünürlük) */
+            opacity: 0.3; 
+            z-index: 1;
+        }
+
+        /* Yazıların geleceği katman */
+        .content-overlay {
+            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        /* İsimlerin stili */
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.5rem;
+            color: #333;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+
+        /* Düğün günü yazısı */
+        .wedding-text {
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            color: #555;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        /* Tarih stili */
+        .date {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #222;
+            border-top: 1px solid #999;
+            border-bottom: 1px solid #999;
+            padding: 5px 20px;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Arka plandaki silik görsel -->
+    <div class="background-image"></div>
+
+    <!-- Öndeki yazılar -->
+    <div class="content-overlay">
+        <h1 class="names">Serkan & Dilara</h1>
+        <div class="wedding-text">Wedding Day</div>
+        <div class="date">26.09.2026</div>
+    </div>
+
+</body>
+</html>
