@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serkan & Dilara Wedding</title>
     
-    <!-- Profesyonel ve Şık Yazı Fontları (Cinzel ve Jost) -->
+    <!-- Şık Tasarım Fontları (Cinzel ve Jost) -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Cinzel:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -20,13 +20,15 @@
         body, html {
             height: 100%;
             font-family: 'Jost', sans-serif;
-            overflow: hidden;
             background-color: #fcfbfa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Silik fotoğraf alanı */
+        /* Net Arka Plan Fotoğrafı */
         .background-image {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -34,124 +36,157 @@
             background-image: url('arka-plan.jpg'); 
             background-size: cover;
             background-position: center;
-            opacity: 0.25; /* Fotoğrafın siliklik oranı (%25) */
+            opacity: 0.85; /* Fotoğraf artık tamamen net ve belirgin */
             z-index: 1;
         }
 
-        /* İçerik katmanı */
-        .content-overlay {
-            position: absolute;
+        /* Fotoğrafın üzerine yazıları okutacak hafif karartma perdesi */
+        .background-overlay {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+            background: rgba(0, 0, 0, 0.15);
             z-index: 2;
-            padding: 20px;
         }
 
-        /* İsimler (Klasik ve Premium Font) */
+        /* Örnek görseldeki gibi dikey beyaz davetiye kartı */
+        .wedding-card {
+            position: relative;
+            z-index: 3;
+            background: rgba(255, 255, 255, 0.93); /* Şeffaf beyaz zarif kart */
+            width: 90%;
+            max-width: 400px;
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+
+        /* En üstteki Kalp Alanı */
+        .heart-icon {
+            font-size: 2.5rem;
+            color: #e24444;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* İsimler Bölümü */
         .names {
             font-family: 'Cinzel', serif;
-            font-size: 3.8rem;
+            font-size: 2.4rem;
             font-weight: 400;
-            color: #1a1a1a;
-            letter-spacing: 4px;
-            margin-bottom: 5px;
+            color: #4a3e3d;
+            line-height: 1.3;
+            margin-bottom: 10px;
         }
 
-        /* Wedding Day Metni */
         .wedding-text {
-            font-size: 1.1rem;
-            letter-spacing: 8px;
-            color: #666;
+            font-size: 1rem;
+            letter-spacing: 6px;
+            color: #8a7a78;
             text-transform: uppercase;
-            margin-bottom: 25px;
-            font-weight: 300;
+            margin-bottom: 20px;
+            font-weight: 400;
         }
 
-        /* Tarih Alanı */
+        /* Tarih ve Saat */
         .date {
-            font-size: 1.4rem;
-            font-weight: 300;
-            color: #222;
-            border-top: 1px solid #ccc;
-            border-bottom: 1px solid #ccc;
-            padding: 8px 30px;
-            letter-spacing: 4px;
-            margin-bottom: 40px;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #5a4b4a;
+            border-top: 1px solid #e0d9d8;
+            border-bottom: 1px solid #e0d9d8;
+            padding: 10px 0;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
         }
 
-        /* Geri Sayım Sayacı Tasarımı */
-        .countdown-container {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 45px;
+        /* Görseldeki gibi 2x2 Kare Sayaç Kutuları */
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 35px;
         }
 
         .countdown-box {
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid #f0eae9;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-width: 70px;
         }
 
         .countdown-number {
-            font-size: 2.2rem;
-            font-weight: 300;
-            color: #1a1a1a;
-            line-height: 1;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #4a3e3d;
         }
 
         .countdown-label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #777;
-            margin-top: 5px;
+            color: #9a8a88;
+            margin-top: 4px;
         }
 
-        /* Şık Harita Butonu */
+        /* Konum Butonu */
         .map-button {
+            display: inline-block;
             font-family: 'Jost', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: #222;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #ffffff;
             text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            padding: 12px 35px;
-            border: 1px solid #222;
-            background-color: transparent;
-            transition: all 0.4s ease;
-            cursor: pointer;
+            letter-spacing: 2px;
+            padding: 14px 0;
+            width: 100%;
+            border-radius: 12px;
+            background-color: #4a3e3d;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(74, 62, 61, 0.3);
         }
 
-        /* Butonun üzerine gelince oluşan animasyon */
         .map-button:hover {
-            background-color: #222;
-            color: #fff;
-            letter-spacing: 4px;
+            background-color: #635352;
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
 
-    <!-- Arka plandaki silik görsel -->
+    <!-- Net Arka Plan Görseli -->
     <div class="background-image"></div>
+    <div class="background-overlay"></div>
 
-    <!-- Öndeki yazılar, sayaç ve konum butonu -->
-    <div class="content-overlay">
-        <h1 class="names">SERKAN & DİLARA</h1>
+    <!-- Dikey Davetiye Kartı -->
+    <div class="wedding-card">
+        <!-- Kalp Logosu -->
+        <div class="heart-icon">❤️</div>
+
+        <!-- Başlıklar -->
+        <h1 class="names">Serkan & Dilara</h1>
         <div class="wedding-text">Wedding Day</div>
-        <div class="date">26.09.2026</div>
+        
+        <!-- Tarih -->
+        <div class="date">26 Eylül 2026</div>
 
-        <!-- Canlı Sayaç Alanı -->
-        <div class="countdown-container">
+        <!-- 2x2 Geri Sayım Kutuları -->
+        <div class="countdown-grid">
             <div class="countdown-box">
                 <span class="countdown-number" id="days">00</span>
                 <span class="countdown-label">Gün</span>
@@ -162,21 +197,21 @@
             </div>
             <div class="countdown-box">
                 <span class="countdown-number" id="minutes">00</span>
-                <span class="countdown-label">Dk</span>
+                <span class="countdown-label">Dakika</span>
             </div>
             <div class="countdown-box">
                 <span class="countdown-number" id="seconds">00</span>
-                <span class="countdown-label">Sn</span>
+                <span class="countdown-label">Saniye</span>
             </div>
         </div>
 
-        <!-- Gönderdiğiniz Google Maps Linki buraya entegre edildi -->
-        <a href="https://maps.app.goo.gl/Q9aXKGHbPtvTyzzF9" target="_blank" class="map-button">
+        <!-- Harita Konum Butonu -->
+        <a href="https://goo.gl" target="_blank" class="map-button">
             Haritada Görüntüle
         </a>
     </div>
 
-    <!-- Canlı Sayacı Çalıştıran Kod Yapısı -->
+    <!-- Sayaç Scripti -->
     <script>
         const weddingDate = new Date(2026, 8, 26, 0, 0, 0).getTime();
 
