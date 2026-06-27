@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serkan & Dilara Wedding</title>
     
-    <!-- Şık Tasarım Fontları (Cinzel ve Jost) -->
+    <!-- Şık Klasik Yazı Fontları (Playfair Display ve Jost) -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Cinzel:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -24,6 +24,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
         }
 
         /* Net Arka Plan Fotoğrafı */
@@ -51,76 +52,77 @@
             z-index: 2;
         }
 
-        /* Küçültülmüş ve daha zarif dikey davetiye kartı */
+        /* Yatayda Geniş, Yüksekliği Az Zarif Davetiye Kartı */
         .wedding-card {
             position: relative;
             z-index: 3;
-            background: rgba(255, 255, 255, 0.93); 
-            width: 85%;
-            max-width: 320px; /* Genişliği 400px'den 320px'e düşürdük */
-            padding: 25px 20px; /* İç boşlukları daralttık */
-            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.94); 
+            width: 90%;
+            max-width: 440px; 
+            padding: 30px 35px; 
+            border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.18);
             text-align: center;
             backdrop-filter: blur(5px);
         }
 
-        /* En üstteki Küçük Kalp */
+        /* Büyük Kalp Alanı */
         .heart-icon {
-            font-size: 1.8rem; /* Kalbi küçülttük */
+            font-size: 3.2rem; 
             color: #e24444;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             animation: pulse 1.5s infinite;
         }
 
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.08); }
             100% { transform: scale(1); }
         }
 
         /* İsimler Bölümü */
         .names {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem; /* Yazı boyutunu küçülttük */
+            font-family: 'Playfair Display', serif;
+            font-size: 2.3rem; 
             font-weight: 400;
-            color: #4a3e3d;
-            line-height: 1.2;
-            margin-bottom: 6px;
+            color: #615352;
+            line-height: 1.3;
+            margin-bottom: 4px;
         }
 
+        /* Wedding Alt Başlığı */
         .wedding-text {
-            font-size: 0.8rem;
-            letter-spacing: 4px;
-            color: #8a7a78;
-            text-transform: uppercase;
-            margin-bottom: 12px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #615352;
+            margin-bottom: 15px;
             font-weight: 400;
         }
 
         /* Tarih */
         .date {
-            font-size: 1rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
             font-weight: 400;
-            color: #5a4b4a;
+            color: #7d6e6d;
             border-top: 1px solid #e0d9d8;
             border-bottom: 1px solid #e0d9d8;
-            padding: 6px 0;
+            padding: 8px 0;
             letter-spacing: 1px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        /* Küçük 2x2 Kare Sayaç Kutuları */
+        /* 2x2 Sayaç Izgarası */
         .countdown-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            gap: 12px;
             margin-bottom: 20px;
         }
 
         .countdown-box {
             background: #ffffff;
-            padding: 10px;
+            padding: 12px;
             border-radius: 8px;
             border: 1px solid #f0eae9;
             box-shadow: 0 2px 6px rgba(0,0,0,0.02);
@@ -130,30 +132,41 @@
         }
 
         .countdown-number {
-            font-size: 1.3rem; /* Sayaç sayılarını küçülttük */
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem; 
             font-weight: 400;
             color: #4a3e3d;
         }
 
         .countdown-label {
-            font-size: 0.6rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #9a8a88;
             margin-top: 2px;
         }
 
-        /* Küçük Harita Butonu */
+        /* Alt Kısımdaki İtalik Mesaj */
+        .bottom-message {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: #7d6e6d;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Güncellenen Yeni Harita Butonu */
         .map-button {
             display: inline-block;
             font-family: 'Jost', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 500;
             color: #ffffff;
             text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 10px 0;
+            letter-spacing: 2px;
+            padding: 12px 0;
             width: 100%;
             border-radius: 8px;
             background-color: #4a3e3d;
@@ -164,6 +177,32 @@
         .map-button:hover {
             background-color: #635352;
             transform: translateY(-1px);
+        }
+
+        /* SAĞ ALTAKİ VİDEO */
+        .bottom-right-video {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 180px; 
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            z-index: 4;
+            opacity: 0.50; 
+            transition: opacity 0.3s ease;
+        }
+
+        @media (max-width: 600px) {
+            .wedding-card {
+                width: 92%;
+                padding: 25px 20px;
+            }
+            .bottom-right-video {
+                width: 110px; 
+                bottom: 15px;
+                right: 15px;
+            }
         }
     </style>
 </head>
@@ -176,7 +215,7 @@
         <div class="heart-icon">❤️</div>
 
         <h1 class="names">Serkan & Dilara</h1>
-        <div class="wedding-text">Wedding Day</div>
+        <div class="wedding-text">Wedding</div>
         
         <div class="date">26 Eylül 2026</div>
 
@@ -199,10 +238,17 @@
             </div>
         </div>
 
-        <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="map-button">
+        <div class="bottom-message">Sonsuz mutluluğa doğru geri sayım başladı...</div>
+
+        <!-- Gönderdiğiniz yeni Google Haritalar linki sorunsuz yönlendirmeyle tanımlandı -->
+        <a href="https://maps.app.goo.gl/LP8S9PvQXyPeUJno7" target="_blank" rel="noopener noreferrer" class="map-button">
             Haritada Görüntüle
         </a>
     </div>
+
+    <video class="bottom-right-video" autoplay muted loop playsinline>
+        <source src="video.mp4" type="video/mp4">
+    </video>
 
     <script>
         const weddingDate = new Date(2026, 8, 26, 0, 0, 0).getTime();
