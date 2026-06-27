@@ -25,8 +25,8 @@
         .countdown-label {font-size: 0.35rem; text-transform: uppercase; color: #ffffff; font-weight: 300;}
         .bottom-message {font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.6rem; color: #ffffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); line-height: 1.1;}
         
-        /* İstediğiniz Gibi: ADI GÜNCELLENEN AKILLI SİSTEM KONUM BUTONU */
-        .map-button {position: fixed; bottom: 15px; left: 15px; z-index: 99; display: inline-block; font-family: 'Jost', sans-serif; font-size: 0.62rem; font-weight: 500; color: #ffffff; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; padding: 10px 14px; border-radius: 6px; background: rgba(0, 0, 0, 0.55); border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(4px); box-shadow: 0 6px 15px rgba(0,0,0,0.3); transition: all 0.3s ease; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); line-height: 1.2; cursor: pointer;}
+        /* GÖNDERDİĞİNİZ SMART BUTON MANTIĞI İLE ENTEGRE EDİLMİŞ PREMIUM KONUM BUTONU */
+        .map-button {position: fixed; bottom: 15px; left: 15px; z-index: 99; display: inline-block; font-family: 'Jost', sans-serif; font-size: 0.62rem; font-weight: 500; color: #ffffff; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; padding: 10px 14px; border-radius: 6px; background: rgba(0, 0, 0, 0.55); border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(4px); box-shadow: 0 6px 15px rgba(0,0,0,0.3); transition: all 0.3s ease; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); line-height: 1.2;}
         .map-button:hover, .map-button:active {background: rgba(0, 0, 0, 0.85); transform: translateY(-1px);}
         
         .bottom-right-video {position: fixed; bottom: 0; right: 0; width: 80px; height: 155px; border-top-left-radius: 12px; box-shadow: -4px -4px 15px rgba(0,0,0,0.2); z-index: 4; opacity: 0.55; object-fit: cover;}
@@ -39,7 +39,7 @@
     </style>
 </head>
 <body>
-    <div class="click-layer" id="mapClickLayer" onclick="startMusic()"></div>
+    <div class="click-layer" id="clickLayer" onclick="startMusic()"></div>
     <div class="background-image"></div>
     <div class="background-overlay"></div>
     <button class="music-btn" id="musicBtn" onclick="toggleMusic(event)">⏸️</button>
@@ -59,47 +59,36 @@
         <div class="bottom-message">Sonsuz mutluluğa doğru geri sayım başladı...</div>
     </div>
 
-    <!-- TARAYICI VE CİHAZ ENGELİNİ %100 AŞAN JAVASCRIPT BAĞLANTILI BUTON -->
-    <a href="#" onclick="openWeddingMap(event)" class="map-button">
+    <!-- İLETTİĞİNİZ KOD MANTIĞINA GÖRE İKİLİ ÇALIŞAN EVRENSEL DÜĞÜN MERASİM ALANI BUTONU -->
+    <a id="navigation-btn" href="https://google.com" target="_blank" rel="noopener noreferrer" class="map-button">
         DÜĞÜN MERASİM ALANI 📍
     </a>
 
     <video class="bottom-right-video" autoplay muted loop playsinline><source src="video.mp4" type="video/mp4"></video>
 
     <script>
+        // Gönderdiğiniz Akıllı Cihaz Tespiti ve Harita Yönlendirme Algoritması
+        document.addEventListener("DOMContentLoaded", function() {
+            var isApple = /Mac|iPhone|iPod|iPad/.test(navigator.userAgent);
+            if (isApple) {
+                var btn = document.getElementById("navigation-btn");
+                // Çamlık Düğün Salonu Apple Haritalar Protokolü
+                btn.href = "maps://?q=Çamlık+Düğün+Salonu&ll=38.470077,27.125471";
+            }
+        });
+
         var myAudio = document.getElementById("weddingMusic"); var isPlaying = false;
         function startMusic() {
             if(!isPlaying) {
-                myAudio.play().then(function() { isPlaying = true; document.getElementById("mapClickLayer").style.display = "none"; }).catch(function(e){});
+                myAudio.play().then(function() { isPlaying = true; document.getElementById("clickLayer").style.display = "none"; }).catch(function(e){});
             }
         }
         function toggleMusic(event) {
             if(event) event.stopPropagation();
             var btn = document.getElementById('musicBtn');
-            if (!isPlaying) { myAudio.play(); btn.innerText = '⏸️'; isPlaying = true; document.getElementById("mapClickLayer").style.display = "none"; } 
+            if (!isPlaying) { myAudio.play(); btn.innerText = '⏸️'; isPlaying = true; document.getElementById("clickLayer").style.display = "none"; } 
             else { myAudio.pause(); btn.innerText = '🎵'; isPlaying = false; }
         }
-
-        // Cihaz kısıtlamalarını aşan ve haritayı kesin olarak açan yeni akıllı fonksiyon
-        function openWeddingMap(event) {
-            if(event) event.preventDefault();
-            var lat = 38.4702316;
-            var lng = 27.1254160;
-            var label = encodeURIComponent("Çamlık Düğün Salonu");
-            
-            if (navigator.userAgent.match(/(iPhone|iPod|iPad)/)) {
-                // iOS yerel harita çağrısı
-                window.open("maps://://apple.com" + label + "&ll=" + lat + "," + lng, "_blank");
-            } else {
-                // Android yerel harita çağrısı
-                window.open("geo:" + lat + "," + lng + "?q=" + lat + "," + lng + "(" + label + ")", "_blank");
-                // Tarayıcı içi yedek fallback hattı
-                setTimeout(function() {
-                    window.open("https://google.com" + lat + "," + lng, "_blank");
-                }, 400);
-            }
-        }
-
         const weddingDate = new Date(2026, 8, 20, 20, 0, 0).getTime();
         setInterval(function() {
             const now = new Date().getTime(); const distance = weddingDate - now;
