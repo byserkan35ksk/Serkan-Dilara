@@ -14,7 +14,7 @@
         .background-image {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('arka-plan.jpg'); background-size: cover; background-position: 62% center; opacity: 0.85; z-index: 1;}
         .background-overlay {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.15); z-index: 2;}
         
-        /* SAĞ ÜST ALAN (YAZILAR) */
+        /* SAĞ ÜST YAZI ALANI */
         .wedding-card {position: fixed; top: 12px; right: 12px; z-index: 99; width: 50%; max-width: 200px; text-align: center; background: none; box-shadow: none; backdrop-filter: none; padding: 0;}
         .heart-icon {font-size: 1.1rem; color: #e24444; margin-bottom: 2px; animation: pulse 1.5s infinite; display: inline-block;}
         @keyframes pulse {0% { transform: scale(1); } 50% { transform: scale(1.08); } 100% { transform: scale(1); }}
@@ -27,17 +27,17 @@
         .countdown-label {font-size: 0.35rem; text-transform: uppercase; color: #ffffff; font-weight: 300;}
         .bottom-message {font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.6rem; color: #ffffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.4); line-height: 1.1;}
         
-        /* GÜNCELLEME: ŞEFFAFLIĞI KALDIRILMIŞ %100 NET HARİTA PENCERESİ */
-        .embedded-map-container {position: fixed; bottom: 12px; left: 12px; width: 135px; height: 105px; border-radius: 8px; overflow: hidden; box-shadow: 0 6px 15px rgba(0,0,0,0.3); z-index: 99; border: 2px solid #ffffff; background: #ffffff; opacity: 1 !important;}
-        .embedded-map-container iframe {width: 100% !important; height: 100% !important; border: 0; opacity: 1 !important;}
+        /* SOL ALTAKİ ŞIK, BEYAZLIĞI YOK EDEN CAM EFEKTLİ AKILLI BUTON */
+        .map-button {position: fixed; bottom: 15px; left: 15px; z-index: 99; display: inline-block; font-family: 'Jost', sans-serif; font-size: 0.62rem; font-weight: 500; color: #ffffff; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; padding: 10px 14px; border-radius: 6px; background: rgba(0, 0, 0, 0.55); border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(4px); box-shadow: 0 6px 15px rgba(0,0,0,0.3); transition: all 0.3s ease; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); line-height: 1.2; cursor: pointer;}
+        .map-button:hover, .map-button:active {background: rgba(0, 0, 0, 0.85); transform: translateY(-1px);}
         
-        /* SAĞ ALTA SIFIRLANMIŞ VİDEO */
+        /* SAĞ ALTAKİ VİDEO */
         .bottom-right-video {position: fixed; bottom: 0; right: 0; width: 80px; height: 155px; border-top-left-radius: 12px; box-shadow: -4px -4px 15px rgba(0,0,0,0.2); z-index: 4; opacity: 0.55; object-fit: cover;}
         .music-btn {position: fixed; top: 12px; left: 12px; z-index: 100; background: rgba(255, 255, 255, 0.9); border: 1px solid #e8e2e1; width: 30px; height: 30px; border-radius: 50%; font-size: 0.7rem; cursor: pointer; display: flex; justify-content: center; align-items: center;}
         
         @media (max-width: 330px) {
             .wedding-card { max-width: 150px; top: 10px; right: 10px; }
-            .embedded-map-container { width: 110px; height: 85px; bottom: 10px; left: 10px; }
+            .map-button { font-size: 0.55rem; padding: 8px 10px; bottom: 10px; left: 10px; }
             .bottom-right-video { width: 70px; height: 135px; }
         }
     </style>
@@ -64,10 +64,10 @@
         <div class="bottom-message">Sonsuz mutluluğa doğru geri sayım başladı...</div>
     </div>
 
-    <!-- %100 Canlı ve Net Gösterilen Google Harita Alanı -->
-    <div class="embedded-map-container">
-        <iframe src="https://google.com" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
-    </div>
+    <!-- CİHAZA GÖRE OTOMATİK DAVRANAN DÜĞÜN MERASİM ALANI BUTONU -->
+    <a href="#" onclick="openSmartMap(event)" class="map-button">
+        DÜĞÜN MERASİM ALANI 📍
+    </a>
 
     <video class="bottom-right-video" autoplay muted loop playsinline><source src="video.mp4" type="video/mp4"></video>
 
@@ -84,6 +84,34 @@
             if (!isPlaying) { myAudio.play(); btn.innerText = '⏸️'; isPlaying = true; document.getElementById("clickLayer").style.display = "none"; } 
             else { myAudio.pause(); btn.innerText = '🎵'; isPlaying = false; }
         }
+
+        // İlettiğiniz Tam Koordinat Verilerini Kullanan Akıllı Cihaz Ayrıştırma Fonksiyonu
+        function openSmartMap(event) {
+            if(event) event.preventDefault();
+            
+            var lat = 38.4701595;
+            var lng = 27.1210801;
+            var label = encodeURIComponent("Çamlık Düğün Salonu");
+            
+            var isApple = /Mac|iPhone|iPod|iPad/.test(navigator.userAgent);
+            var isAndroid = /Android/.test(navigator.userAgent);
+
+            if (isApple) {
+                // 1. IOS (Apple Haritalar Uygulaması) İçi Kusursuz Link Protokolü
+                window.open("maps://?q=" + label + "&ll=" + lat + "," + lng, "_blank");
+            } else if (isAndroid) {
+                // 2. Android (Google Haritalar Uygulaması) İçi Derin Bağlantı Protokolü
+                window.open("geo:" + lat + "," + lng + "?q=" + lat + "," + lng + "(" + label + ")", "_blank");
+                // Tarayıcı içi yedek fallback rotası
+                setTimeout(function() {
+                    window.open("https://google.com" + lat + "," + lng, "_blank");
+                }, 400);
+            } else {
+                // 3. Masaüstü Windows/Mac (Google Maps Web Koordinat) Protokolü
+                window.open("https://google.com" + lat + "," + lng + "/@" + lat + "," + lng + ",17z/", "_blank");
+            }
+        }
+
         const weddingDate = new Date(2026, 8, 20, 20, 0, 0).getTime();
         setInterval(function() {
             const now = new Date().getTime(); const distance = weddingDate - now;
