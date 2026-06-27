@@ -9,34 +9,34 @@
     <link href="https://googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
     <style>
         * {margin: 0; padding: 0; box-sizing: border-box;}
-        body, html {height: 100%; font-family: 'Jost', sans-serif; background-color: #fcfbfa; display: flex; justify-content: center; align-items: flex-end; overflow: hidden;}
+        body, html {height: 100%; font-family: 'Jost', sans-serif; background-color: #fcfbfa; display: flex; justify-content: flex-start; align-items: flex-end; overflow: hidden;}
         .click-layer {position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 8; cursor: pointer;}
         .background-image {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('arka-plan.jpg'); background-size: cover; background-position: center; opacity: 0.85; z-index: 1;}
         .background-overlay {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.18); z-index: 2;}
         
-        /* İstediğiniz gibi: DAHA GENİŞ, DAHA KÜÇÜK VE AŞAĞIYA ALINMIŞ KART */
-        .wedding-card {position: relative; z-index: 99; background: rgba(255, 255, 255, 0.95); width: 94%; max-width: 480px; padding: 12px 20px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); text-align: center; backdrop-filter: blur(5px); margin-bottom: 40px;}
-        .heart-icon {font-size: 1.4rem; color: #e24444; margin-bottom: 1px; animation: pulse 1.5s infinite;}
+        /* İstediğiniz Gibi: SOL ALTA ALINMIŞ, DAHA KÜÇÜK VE ZARİF KART */
+        .wedding-card {position: relative; z-index: 99; background: rgba(255, 255, 255, 0.95); width: 88%; max-width: 360px; padding: 12px 18px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); text-align: center; backdrop-filter: blur(5px); margin-left: 20px; margin-bottom: 20px;}
+        .heart-icon {font-size: 1.3rem; color: #e24444; margin-bottom: 1px; animation: pulse 1.5s infinite;}
         @keyframes pulse {0% { transform: scale(1); } 50% { transform: scale(1.08); } 100% { transform: scale(1); }}
         
-        /* Küçültülmüş Fontlar */
-        .names {font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 400; color: #4a3e3d; line-height: 1.1; margin-bottom: 1px;}
-        .wedding-text {font-family: 'Playfair Display', serif; font-size: 0.95rem; color: #4a3e3d; margin-bottom: 3px; font-weight: 400;}
-        .date {font-family: 'Playfair Display', serif; font-size: 0.78rem; font-weight: 400; color: #6e5d5c; border-top: 1px solid #e8e2e1; border-bottom: 1px solid #e8e2e1; padding: 1px 0; margin-bottom: 6px;}
+        /* Bir Tık Daha Küçültülmüş Fontlar */
+        .names {font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 400; color: #4a3e3d; line-height: 1.1; margin-bottom: 1px;}
+        .wedding-text {font-family: 'Playfair Display', serif; font-size: 0.9rem; color: #4a3e3d; margin-bottom: 3px; font-weight: 400;}
+        .date {font-family: 'Playfair Display', serif; font-size: 0.75rem; font-weight: 400; color: #6e5d5c; border-top: 1px solid #e8e2e1; border-bottom: 1px solid #e8e2e1; padding: 1px 0; margin-bottom: 6px;}
         
         .countdown-grid {display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-bottom: 6px;}
         .countdown-box {background: #ffffff; padding: 3px; border-radius: 4px; border: 1px solid #f2eded; display: flex; flex-direction: column; align-items: center;}
-        .countdown-number {font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; color: #4a3e3d;}
-        .countdown-label {font-size: 0.48rem; text-transform: uppercase; color: #9c8b8a;}
-        .bottom-message {font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.72rem; color: #6e5d5c; margin-bottom: 6px;}
+        .countdown-number {font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 400; color: #4a3e3d;}
+        .countdown-label {font-size: 0.45rem; text-transform: uppercase; color: #9c8b8a;}
+        .bottom-message {font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.7rem; color: #6e5d5c; margin-bottom: 6px;}
         
         .map-button {display: inline-block; font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 500; color: #ffffff; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; padding: 7px 0; width: 100%; border-radius: 4px; background-color: #4a3e3d; transition: all 0.3s ease; position: relative; z-index: 100;}
         .map-button:hover {background-color: #635352;}
         
-        /* Sağ alttaki video kutusu (kart aşağı indiği için sola kaydırdık) */
-        .bottom-right-video {position: fixed; bottom: 10px; right: 10px; width: 85px; height: auto; border-radius: 8px; box-shadow: 0 6px 15px rgba(0,0,0,0.12); z-index: 4; opacity: 0.50;}
-        .music-btn {position: fixed; top: 10px; left: 10px; z-index: 100; background: rgba(255, 255, 255, 0.9); border: 1px solid #e8e2e1; width: 32px; height: 32px; border-radius: 50%; font-size: 0.75rem; cursor: pointer; display: flex; justify-content: center; align-items: center;}
-        @media (max-width: 600px) {.wedding-card {width: 92%; padding: 10px 15px; margin-bottom: 25px;} .bottom-right-video { width: 75px; }}
+        /* Kart sol alta geçtiği için video alanını sağ üst köşeye taşıyarak dengeledik */
+        .bottom-right-video {position: fixed; top: 15px; right: 15px; width: 80px; height: auto; border-radius: 8px; box-shadow: 0 6px 15px rgba(0,0,0,0.12); z-index: 4; opacity: 0.50;}
+        .music-btn {position: fixed; bottom: 15px; right: 15px; z-index: 100; background: rgba(255, 255, 255, 0.9); border: 1px solid #e8e2e1; width: 32px; height: 32px; border-radius: 50%; font-size: 0.75rem; cursor: pointer; display: flex; justify-content: center; align-items: center;}
+        @media (max-width: 600px) {.wedding-card {width: 90%; margin-left: 15px; margin-bottom: 15px;} .bottom-right-video { width: 70px; top: 10px; right: 10px; } .music-btn { bottom: 10px; right: 10px; }}
     </style>
 </head>
 <body>
@@ -54,11 +54,13 @@
         <div class="countdown-grid">
             <div class="countdown-box"><span class="countdown-number" id="days">00</span><span class="countdown-label">Gün</span></div>
             <div class="countdown-box"><span class="countdown-number" id="hours">00</span><span class="countdown-label">Saat</span></div>
-            <div class="countdown-box"><span class="countdown-number" id="minutes">00</span><span class="countdown-label">Dakika</span></div>
-            <div class="countdown-box"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">Saniye</span></div>
+            <div class="countdown-box"><span class="countdown-number" id="minutes">00</span><span class="countdown-label">Dk</span></div>
+            <div class="countdown-box"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">Sn</span></div>
         </div>
         <div class="bottom-message">Sonsuz mutluluğa doğru geri sayım başladı...</div>
-        <a href="https://google.comzmir" target="_blank" rel="noopener noreferrer" class="map-button">Haritada Görüntüle</a>
+        
+        <!-- Kesin Açılan Küresel Google Haritalar Linki (Salon Venedik İzmir Koordinat Protokolü) -->
+        <a href="https://google.com" target="_blank" rel="noopener noreferrer" class="map-button">Haritada Görüntüle</a>
     </div>
 
     <video class="bottom-right-video" autoplay muted loop playsinline><source src="video.mp4" type="video/mp4"></video>
