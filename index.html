@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serkan & Dilara Wedding</title>
-    <!-- Şık bir yazı fontu ekliyoruz -->
-    <link href="https://googleapis.com" rel="stylesheet">
+    
+    <!-- Profesyonel ve Şık Yazı Fontları (Cinzel ve Jost) -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -16,9 +19,9 @@
 
         body, html {
             height: 100%;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Jost', sans-serif;
             overflow: hidden;
-            background-color: #f7f5f0; /* Arka plan rengi */
+            background-color: #fcfbfa;
         }
 
         /* Silik fotoğraf alanı */
@@ -28,18 +31,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Buraya masaüstündeki fotoğrafınızın adını yazacaksınız */
             background-image: url('arka-plan.jpg'); 
             background-size: cover;
             background-position: center;
-            /* Fotoğrafı silikleştiren kritik ayar (0.3 = %30 görünürlük) */
-            opacity: 0.3; 
+            opacity: 0.25; /* Fotoğrafın siliklik oranı (%25) */
             z-index: 1;
         }
 
-        /* Yazıların geleceği katman */
+        /* İçerik katmanı */
         .content-overlay {
-            position: relative;
             position: absolute;
             top: 0;
             left: 0;
@@ -54,33 +54,88 @@
             padding: 20px;
         }
 
-        /* İsimlerin stili */
+        /* İsimler (Klasik ve Premium Font) */
         .names {
-            font-family: 'Great Vibes', cursive;
-            font-size: 4.5rem;
-            color: #333;
-            margin-bottom: 10px;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
-        }
-
-        /* Düğün günü yazısı */
-        .wedding-text {
-            font-size: 1.5rem;
+            font-family: 'Cinzel', serif;
+            font-size: 3.8rem;
+            font-weight: 400;
+            color: #1a1a1a;
             letter-spacing: 4px;
-            color: #555;
-            text-transform: uppercase;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
         }
 
-        /* Tarih stili */
+        /* Wedding Day Metni */
+        .wedding-text {
+            font-size: 1.1rem;
+            letter-spacing: 8px;
+            color: #666;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        /* Tarih Alanı */
         .date {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             font-weight: 300;
             color: #222;
-            border-top: 1px solid #999;
-            border-bottom: 1px solid #999;
-            padding: 5px 20px;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            padding: 8px 30px;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+        }
+
+        /* Geri Sayım Sayacı Tasarımı */
+        .countdown-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 45px;
+        }
+
+        .countdown-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 70px;
+        }
+
+        .countdown-number {
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: #1a1a1a;
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
             letter-spacing: 2px;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        /* Şık Harita Butonu */
+        .map-button {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #222;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            padding: 12px 35px;
+            border: 1px solid #222;
+            background-color: transparent;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        /* Butonun üzerine gelince oluşan animasyon */
+        .map-button:hover {
+            background-color: #222;
+            color: #fff;
+            letter-spacing: 4px;
         }
     </style>
 </head>
@@ -89,12 +144,65 @@
     <!-- Arka plandaki silik görsel -->
     <div class="background-image"></div>
 
-    <!-- Öndeki yazılar -->
+    <!-- Öndeki yazılar, sayaç ve konum butonu -->
     <div class="content-overlay">
-        <h1 class="names">Serkan & Dilara</h1>
+        <h1 class="names">SERKAN & DİLARA</h1>
         <div class="wedding-text">Wedding Day</div>
         <div class="date">26.09.2026</div>
+
+        <!-- Canlı Sayaç Alanı -->
+        <div class="countdown-container">
+            <div class="countdown-box">
+                <span class="countdown-number" id="days">00</span>
+                <span class="countdown-label">Gün</span>
+            </div>
+            <div class="countdown-box">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">Saat</span>
+            </div>
+            <div class="countdown-box">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">Dk</span>
+            </div>
+            <div class="countdown-box">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">Sn</span>
+            </div>
+        </div>
+
+        <!-- Gönderdiğiniz Google Maps Linki buraya entegre edildi -->
+        <a href="https://maps.app.goo.gl/Q9aXKGHbPtvTyzzF9" target="_blank" class="map-button">
+            Haritada Görüntüle
+        </a>
     </div>
+
+    <!-- Canlı Sayacı Çalıştıran Kod Yapısı -->
+    <script>
+        const weddingDate = new Date(2026, 8, 26, 0, 0, 0).getTime();
+
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+            }
+        }, 1000);
+    </script>
 
 </body>
 </html>
